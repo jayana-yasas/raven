@@ -36,6 +36,11 @@ public class RabbitMQConfig {
 		Map<String, Object> args = new HashMap<String, Object>();
 		return new Queue(Configurations.QUEUE_SMS_B, true,false,false,args);
 	}
+	@Bean
+	Queue queue_sms_reply() {
+		Map<String, Object> args = new HashMap<String, Object>();
+		return new Queue(Configurations.QUEUE_SMS_REPLY, true,false,false,args);
+	}
 
 	@Bean
 	DirectExchange exchange_sms_tier_a() {
@@ -45,6 +50,10 @@ public class RabbitMQConfig {
 	DirectExchange exchange_sms_tier_b() {
 		return new DirectExchange(Configurations.EXCHANGE_SMS_B);
 	}
+	@Bean
+	DirectExchange exchange_sms_reply() {
+		return new DirectExchange(Configurations.EXCHANGE_SMS_REPLY);
+	}
 
 	@Bean
 	public Binding binding_sms_tier_a() {
@@ -53,6 +62,10 @@ public class RabbitMQConfig {
 	@Bean
 	public Binding binding_sms_tier_b() {
 		return BindingBuilder.bind(queue_sms_tier_b()).to(exchange_sms_tier_b()).with(routingKey);
+	}
+	@Bean
+	public Binding binding_sms_reply() {
+		return BindingBuilder.bind(queue_sms_reply()).to(exchange_sms_reply()).with(routingKey);
 	}
 
 	@Bean

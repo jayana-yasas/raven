@@ -8,6 +8,7 @@ import java.util.Objects;
 @Table(name = "sms_sent", schema = "campaign", catalog = "")
 public class SmsSent {
     private int id;
+    private String uuid;
     private int campaignId;
     private String mobile;
     private String content;
@@ -24,6 +25,16 @@ public class SmsSent {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Basic
+    @Column(name = "uuid")
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     @Basic
@@ -104,6 +115,7 @@ public class SmsSent {
         return id == smsSent.id &&
                 campaignId == smsSent.campaignId &&
                 clicks == smsSent.clicks &&
+                Objects.equals(uuid, smsSent.uuid) &&
                 Objects.equals(mobile, smsSent.mobile) &&
                 Objects.equals(content, smsSent.content) &&
                 Objects.equals(status, smsSent.status) &&
@@ -114,6 +126,15 @@ public class SmsSent {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, campaignId, mobile, content, status, reference, clicks, createdtime);
+        return Objects.hash(id, uuid, campaignId, mobile, content, status, reference, clicks, createdtime);
+    }
+
+    @Override
+    public String toString() {
+        return "SmsSent{" +
+                "uuid='" + uuid + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

@@ -9,14 +9,16 @@ public class SMSTask {
 
     public String mobile;
     public String content;
+    public String uuid;
     public SmsCampaign smsCampaign;
 
     public SMSTask() {
         super();
     }
 
-    public SMSTask(String mobile,String content, SmsCampaign smsCampaign){
+    public SMSTask(String mobile,String content,String uuid, SmsCampaign smsCampaign){
         this.mobile = mobile;
+        this.uuid = uuid;
         this.content = content;
         this.smsCampaign = smsCampaign;
     }
@@ -45,4 +47,20 @@ public class SMSTask {
         this.smsCampaign = smsCampaign;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public String toString() {
+        return "SMSTask{" +
+                "uuid='" + uuid + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }
