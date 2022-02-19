@@ -78,4 +78,18 @@ public class BasicUtilities<T> {
         }
         return line;
     }
+
+    public static String getTelco(String mobile) {
+        if(mobile.startsWith("070") || mobile.startsWith("071") ){
+            return "Mobitel";
+        } else if(mobile.startsWith("072") || mobile.startsWith("078")  ){
+            return "Hutch";
+        } else if(mobile.startsWith("076") || mobile.startsWith("077")  ){
+            return "Dialog";
+        }else if(mobile.startsWith("075")){
+            return "Airtel";
+        }else{
+            return "Other";
+        }
+    }
 }

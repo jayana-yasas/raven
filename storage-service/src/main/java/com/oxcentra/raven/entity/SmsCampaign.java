@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "sms_campaign" )
+@Table(name = "sms_campaign", schema = "campaign", catalog = "")
 public class SmsCampaign {
     private int campaignId;
     private String campaignName;
@@ -17,6 +17,7 @@ public class SmsCampaign {
     private Timestamp scheduleDatetime;
     private String status;
     private String tags;
+    private Byte priority;
 
     @Id
     @Column(name = "campaign_id")
@@ -149,5 +150,15 @@ public class SmsCampaign {
                 ", status='" + status + '\'' +
                 ", tags='" + tags + '\'' +
                 '}';
+    }
+
+    @Basic
+    @Column(name = "priority")
+    public Byte getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Byte priority) {
+        this.priority = priority;
     }
 }

@@ -16,6 +16,16 @@ public class SmsSent {
     private String reference;
     private int clicks;
     private Timestamp createdtime;
+    private String campaignName;
+    private String telco;
+
+    public void setCampaignId(Integer campaignId) {
+        this.campaignId = campaignId;
+    }
+
+    public void setClicks(Integer clicks) {
+        this.clicks = clicks;
+    }
 
     @Id
     @Column(name = "id")
@@ -136,5 +146,25 @@ public class SmsSent {
                 ", mobile='" + mobile + '\'' +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    @Basic
+    @Column(name = "campaign_name")
+    public String getCampaignName() {
+        return campaignName;
+    }
+
+    public void setCampaignName(String campaignName) {
+        this.campaignName = campaignName;
+    }
+
+    @Basic
+    @Column(name = "telco")
+    public String getTelco() {
+        return telco;
+    }
+
+    public void setTelco(String telco) {
+        this.telco = telco;
     }
 }
