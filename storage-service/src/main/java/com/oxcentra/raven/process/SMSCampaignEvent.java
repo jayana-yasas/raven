@@ -55,7 +55,9 @@ public class SMSCampaignEvent implements Runnable {
                             smsSent.setMobile(entry.getKey());
                             smsSent.setContent(entry.getValue());
                             smsSent.setCreatedtime(new Timestamp(System.currentTimeMillis()));
-
+                            smsSent.setCampaignId(smsCampaign.getCampaignId());
+                            smsSent.setCampaignName(smsCampaign.getCampaignName());
+                            smsSent.setTelco(BasicUtilities.getTelco(entry.getKey()));
                             smsSentRepository.save(smsSent);
                             smsTask = new SMSTask(entry.getKey(), entry.getValue(),smsSent.getUuid(), smsCampaign);
                             rabbitMQSender.ConvertAndSendToSmsApplication(smsTask);
