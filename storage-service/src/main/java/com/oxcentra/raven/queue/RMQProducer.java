@@ -1,6 +1,5 @@
 package com.oxcentra.raven.queue;
 
-import com.oxcentra.raven.configs.Configurations;
 import com.oxcentra.raven.process.SMSTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +24,7 @@ public class RMQProducer {
 	
 	public void ConvertAndSendToSmsApplication(SMSTask smsTask) {
 		try {
-			String exchange = Configurations.EXCHANGE_SMS_A;
+			String exchange = "EXCHANGE_SMS_A";
 			MessagePostProcessor messagePostProcessor = new MessagePostProcessor() {
 				@Override
 				public Message postProcessMessage(Message message) throws AmqpException {
