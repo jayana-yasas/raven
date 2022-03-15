@@ -1,13 +1,11 @@
 package com.oxcentra.raven.repository;
 
-import com.oxcentra.raven.entity.Contacts;
 import com.oxcentra.raven.entity.SmsCampaign;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface SmsCampaignRepository extends CrudRepository<SmsCampaign, Integer> {
 
